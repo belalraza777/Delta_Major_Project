@@ -1,0 +1,52 @@
+<% layout('layout/boilerplate') -%>
+
+<body class="bg-light">
+
+    <div class="container my-5">
+        <h3 class="mb-4 text-center text-md-start">Create New Listing</h3>
+
+        <form action="/listings" method="post" enctype="multipart/form-data"
+              class="p-4 bg-white shadow-sm rounded-4 needs-validation" novalidate>
+
+            <!-- Title -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter Title" required>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" name="description" id="description" class="form-control" placeholder="Enter Description" required>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label for="price" class="form-label">Price (INR)</label>
+                <input type="number" name="price" id="price" class="form-control" placeholder="Enter Price" required>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" name="image" id="image" class="form-control" required>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="Enter Location" required>
+            </div>
+
+            <!-- Country -->
+            <div class="mb-4">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="country" id="country" class="form-control" placeholder="Enter Country" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Create</button>
+        </form>
+    </div>
+
+</body>

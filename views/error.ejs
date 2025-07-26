@@ -1,0 +1,10 @@
+<% layout('layout/boilerplate') -%>
+
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="alert alert-danger text-center shadow p-4 rounded w-100" style="max-width: 600px;">
+        <h4 class="alert-heading mb-3">Error <%= err.status || 500 %></h4>
+        <p class="mb-0 fs-5">
+            <%= err.message || "Something went wrong!" %>
+        </p>
+    </div>
+</div>

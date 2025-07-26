@@ -1,0 +1,115 @@
+<% layout('layout/boilerplate') -%>
+
+    <body>
+        <div class="container my-4">
+            <!-- Card displaying listing details -->
+            <div class="card mx-auto" style="max-width: 80%;">
+                <!-- Listing image -->
+                <img src="<%= listing.image.url %>" class="card-img-top img-fluid" alt="..."
+                    style="height: 22rem; object-fit: cover;">
+
+                <!-- Card content -->
+                <div class="card-body">
+                    <p><i>Owned By: <%= listing.owner?.username || "no user" %></i></p>
+                    <h3 class="card-title">
+                        <%= listing.title %>
+                    </h3>
+
+                    <ul style="list-style-type:circle;">
+                        <li>
+                            <%= listing.description %>
+                        </li>
+                        <li>&#x20B9;<%= (listing.price).toLocaleString("en-IN") %> /night</li>
+                        <li>
+                            <%= listing.location %>
+                        </li>
+                        <li>
+                            <%= listing.country %>
+                        </li>
+                    </ul>
+
+                    <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+                        <div class="d-flex flex-wrap gap-3 mb-3">
+                            <form action="/listings/<%=listing._id %>/edit" method="get">
+                                <button class="btn btn-outline-danger">Edit</button>
+                            </form>
+                            <form action="/listings/<%=listing._id %>?_method=DELETE" method="post">
+                                <button class="btn btn-outline-dark">Delete</button>
+                            </form>
+                        </div>
+                        <% } %>
+                </div>
+
+                <!-- Review form -->
+                <div class="mx-auto p-3 w-100" style="width: 80%;">
+                    <hr>
+                    <% if (currentUser) { %>
+                        <h4 class="fw-bold mb-2">Leave a Review</h4>
+
+                        <form action="/listings/<%= listing._id %>/reviews" method="post"
+                            class="p-3 bg-light shadow-sm needs-validation" novalidate>
+                            <!-- Star rating input -->
+                            <fieldset class="starability-growRotate">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
+                                    aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="rating" value="1" />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="rating" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="rating" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="rating" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="rating" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+
+                            <div class="mb-3">
+                                <textarea class="form-control" name="comment" id="comment" rows="5"
+                                    placeholder="Write your comment here..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-dark">Comment</button>
+                        </form>
+                        <% } %>
+                </div>
+
+                <!-- Display all reviews -->
+                <div class="mx-auto p-3 w-100" style="width: 80%;">
+                    <% if (listing.reviews && listing.reviews.length> 0) { %>
+                        <h4 class="mb-3">All Reviews</h4>
+                        <% } %>
+                            <div class="row">
+                                <% for(let review of listing.reviews) { %>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="border p-2 rounded">
+                                            <i>@<%= review.author.username %></i>
+                                            <p class="starability-result" data-rating="<%= review.rating %>"
+                                                style="height: 15px; background-color: rgb(255, 255, 255);"></p>
+                                            <p><b>
+                                                    <%= review.comment %>
+                                                </b></p>
+
+                                            <% if (currentUser && currentUser._id.equals(review.author._id)) { %>
+                                                <form
+                                                    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                    method="post">
+                                                    <button class="btn btn-outline-danger">Remove</button>
+                                                </form>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                          
+
+                            <!-- map -->
+                            <h4>Where you’ll be</h4>
+                            <div id="map" class="w-100 rounded" style="min-height: 250px;"
+                                data-location="<%= listing.location %>" data-country="<%= listing.country %>"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/map.js"></script>
+    </body>
