@@ -64,4 +64,138 @@ body {
   width: 100%;
 }
 
+/* index */
+.filters {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
+  margin: 15px;
+}
+
+.filter {
+  margin: 7px 16px;
+  margin-top: 8px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.filter:hover {
+  opacity: 100;
+}
+
+.tax-switch {
+  border: 1px solid black;
+  border-radius: 0.6rem;
+  height: 3.2rem;
+  padding: 0.8rem;
+  margin-left: 5rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+
+}
+
+.tax-price {
+  color: rgb(190, 7, 7);
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .filter {
+    width: 70px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .filter i {
+    font-size: 18px;
+  }
+
+  .filter p {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .tax-switch {
+    flex-basis: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .tax-switch label {
+    font-size: 12px;
+  }
+
+  .form-check-input {
+    transform: scale(0.9);
+  }
+}
+
+
 /* show */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 0px;
+    }
+
+    .card {
+        width: 100% !important;
+    }
+
+    .card-img-top {
+        height: 200px !important;
+        object-fit: cover;
+    }
+
+    .card-body h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-body p,
+    .card-body li {
+        font-size: 0.9rem;
+    }
+
+    .d-flex.flex-wrap.gap-3.mb-3 {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .form-control,
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    button.btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #map {
+        min-height: 200px !important;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+    }
+
+    .starability-result {
+        font-size: 0.8rem;
+        height: 12px !important;
+    }
+}

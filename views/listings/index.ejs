@@ -1,41 +1,5 @@
 <% layout('layout/boilerplate') -%>
-    <style>
-        .filters {
-            display: flex;
-            /* align-items: center; */
-            justify-content: center;
-            text-align: center;
-            margin: 15px;
-        }
-
-        .filter {
-            margin: 7px 16px;
-            margin-top: 8px;
-            opacity: 0.7;
-            cursor: pointer;
-        }
-
-        .filter:hover {
-            opacity: 100;
-        }
-
-        .tax-switch {
-            border: 1px solid black;
-            border-radius: 0.6rem;
-            height: 3.2rem;
-            padding: 0.8rem;
-            margin-left: 5rem;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-
-        }
-
-        .tax-price {
-            color: rgb(190, 7, 7);
-            display: none;
-        }
-    </style>
+    
 
     <body>
         <!-- filters -->
@@ -79,7 +43,7 @@
 
             <div class="tax-switch">
                 <div class="form-check-reverse form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Display after total taxes</label>
                 </div>
             </div>
