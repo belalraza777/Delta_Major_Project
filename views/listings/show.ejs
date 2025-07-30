@@ -31,10 +31,14 @@
                     <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
                         <div class="d-flex flex-wrap gap-3 mb-3">
                             <form action="/listings/<%=listing._id %>/edit" method="get">
-                                <button class="btn btn-outline-danger">Edit</button>
+                                <button class="btn btn-outline-dark">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
                             </form>
                             <form action="/listings/<%=listing._id %>?_method=DELETE" method="post">
-                                <button class="btn btn-outline-dark">Delete</button>
+                                <button class="btn btn-outline-dark">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </form>
                         </div>
                         <% } %>
@@ -69,7 +73,8 @@
                                     placeholder="Write your comment here..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-outline-dark">Comment</button>
+                            <button type="submit" class="btn btn-dark">Comment <i
+                                    class="fa-solid fa-comment"></i></button>
                         </form>
                         <% } %>
                 </div>
@@ -94,14 +99,16 @@
                                                 <form
                                                     action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                                                     method="post">
-                                                    <button class="btn btn-outline-danger">Remove</button>
+                                                    <button class="btn btn-outline-danger"><i
+                                                            class="fa-solid fa-trash"></i>
+                                                    </button>
                                                 </form>
                                                 <% } %>
                                         </div>
                                     </div>
                                     <% } %>
                             </div>
-                          
+
 
                             <!-- map -->
                             <h4>Where you’ll be</h4>
