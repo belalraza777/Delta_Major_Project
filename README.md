@@ -127,6 +127,11 @@ major-project-by-delta/
 - `GET /login` - Login form
 - `POST /login` - User login
 - `GET /logout` - User logout
+- `GET /account` - show profile
+- `GET /account/password` - Change Password Form
+- `POST /account/password` - Change Password
+
+
 
 ## 🔐 Authentication & Authorization
 
