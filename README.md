@@ -171,10 +171,9 @@ major-project-by-delta/
 
 This application can be deployed to various platforms:
 
-- **Heroku**: Add MongoDB Atlas and Cloudinary add-ons
-- **Railway**: Connect to MongoDB and configure environment variables
-- **Vercel**: Configure for Node.js deployment
-- **DigitalOcean**: Deploy to App Platform or Droplet
+- **MongoDB_Atlas**: DataBase Hosting
+- **Render**: My Project is depoly on render 
+Live Link : "https://easybnb.onrender.com/"
 
 ## 🤝 Contributing
 
