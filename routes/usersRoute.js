@@ -10,16 +10,16 @@ const { redirectUrl, isLoggedIn } = require("../middleware");
 router.get("/signup", (req, res) => {
     res.render("users/signup.ejs");
 });
-router.post("/signup", asyncWrap(async (req, res) => {
+router.post("/signup", asyncWrap(async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
-        const newUser = new User({ username, email });
+        const newUser = new User({ username: username.trim(), email: email.trim() });
         const resUser = await User.register(newUser, password);
         req.login(resUser, (err) => {
             if (err) return next(err);
+            req.flash("success", `Welcome @${username}`);
+            res.redirect("/listings");
         });
-        req.flash("success", `Welcome @${req.body.username}`);
-        res.redirect("/listings");
     } catch (err) {
         req.flash("error", "email already exist..");
         res.redirect("/signup");
@@ -37,7 +37,7 @@ router.post("/login",
     }),
     async (req, res) => {
         const redirect = res.locals.redirectUrl || "/listings";
-        req.flash("success",`Welcome Back @${req.body.username}`);
+        req.flash("success", `Welcome Back @${req.body.username}`);
         res.redirect(redirect);
     });
 
