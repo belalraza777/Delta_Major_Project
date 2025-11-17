@@ -71,9 +71,9 @@ app.use((req, res, next) => {
 
 //route
 app.get("/",(req,res)=>{res.render("listings/home.ejs")});
-app.use("/listings", listingsRouter);
-app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/", usersRouter);
+app.use("/listings", listingsRouter); //listings routes
+app.use("/listings/:id/reviews", reviewsRouter); //reviews routes
+app.use("/", usersRouter); //users routes
 
 
 // Handle all unmatched routes
@@ -87,6 +87,7 @@ app.use((err, req, res, next) => {
   res.status(status).render("error.ejs", { err });
 });
 
-app.listen(8000, () => {
-  console.log("Server Started at 8000")
+  
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`Server Started at ${process.env.PORT || 8000}`)
 });
