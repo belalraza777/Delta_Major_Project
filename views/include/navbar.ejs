@@ -45,14 +45,14 @@
 
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">New Listing</a>
-        <% if (!currentUser) { %>
+        <% if (!locals.currentUser) { %>
           <a class="nav-link " style=" margin: 0px 5px;" href="/signup"><b>Signup</b></a>
           <a class="nav-link" style=" margin: 0px 5px;" href="/login"><b>Login</b></a>
           <% } %>
 
-            <% if (currentUser) { %>
+            <% if (locals.currentUser) { %>
               <a class="nav-link nav-profile" href="/account"><i class="fa-solid fa-user" style="color: #f6343a;"></i>
-                <%= currentUser.username %>
+                <%= locals.currentUser.username %>
               </a>
               <% } %>
 

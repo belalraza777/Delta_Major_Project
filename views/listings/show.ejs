@@ -28,7 +28,7 @@
                         </li>
                     </ul>
 
-                    <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+                    <% if (locals.currentUser && locals.currentUser._id.equals(listing.owner._id)) { %>
                         <div class="d-flex flex-wrap gap-3 mb-3">
                             <form action="/listings/<%=listing._id %>/edit" method="get">
                                 <button class="btn btn-outline-dark">
@@ -47,7 +47,7 @@
                 <!-- Review form -->
                 <div class="mx-auto p-3 w-100" style="width: 80%;">
                     <hr>
-                    <% if (currentUser) { %>
+                    <% if (locals.currentUser) { %>
                         <h4 class="fw-bold mb-2">Leave a Review</h4>
 
                         <form action="/listings/<%= listing._id %>/reviews" method="post"
@@ -95,7 +95,7 @@
                                                     <%= review.comment %>
                                                 </b></p>
 
-                                            <% if (currentUser && currentUser._id.equals(review.author._id)) { %>
+                                            <% if (locals.currentUser && locals.currentUser._id.equals(review.author._id)) { %>
                                                 <form
                                                     action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                                                     method="post">
